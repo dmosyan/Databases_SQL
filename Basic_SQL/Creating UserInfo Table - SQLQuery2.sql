@@ -2,7 +2,7 @@ USE ISTC
 --CREATING userInfo TABLE
 CREATE TABLE [userInfo]
 (
-	firstName varchar(10),
+	firstName varchar(10) PRIMARY KEY,
 	lastName varchar(12),
 	Age int,
 	dateOfBirth date,
@@ -38,4 +38,16 @@ VALUES ('Master', 'Harvard', 1, 60000),
 --CHANGING isMarried DATATYPE FROM BIT TO INT
 ALTER TABLE [dbo].[userInfo]
 ALTER COLUMN isMarried int;
+
+--DROPING PRIMARY KEY
+ALTER TABLE [dbo].[userInfo]
+DROP CONSTRAINT [PK__userInfo__AC2CAB49514390E7];
+
+--MAKING THE COLUMN UNNULLABLE
+ALTER TABLE [dbo].[userInfo] 
+ALTER COLUMN lastName varchar(12) NOT NULL
+
+--SETTING NEW PRIMARY KEY
+ALTER TABLE [dbo].[userInfo] 
+ADD PRIMARY KEY (lastName)
 
